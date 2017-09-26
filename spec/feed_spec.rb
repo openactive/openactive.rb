@@ -28,10 +28,31 @@ describe OpenActive::Feed do
   end
 
   context "when harvesting" do
-    it "should yield page at end"
-    it "should yield every page"
-    it "should follow next page"
-    it "should end at last page"
-    it "should harvest all pages"
+    before(:each) do
+      WebMock.stub_request(:get, "http://www.example.com").to_return(body: load_fixture("multiple-items.json"))
+      WebMock.stub_request(:get, "http://www.example.com/last").to_return(body: load_fixture("last-page.json"))
+    end
+    let(:feed) {
+      OpenActive::Feed.new("http://www.example.com")
+    }
+    it "should return page at end" do
+      page = feed.harvest
+      expect( page ).to_not be_nil
+    end
+
+    it "should end at last page" do
+      page = feed.harvest
+      expect( page.items ).to eql([])
+      expect( page.last_page? ).to eql(true)
+    end
+
+    it "should yield every page" do
+      pages = 0
+      feed.harvest do |page|
+        pages += 1
+      end
+      expect( pages ).to eql(2)
+    end
+
   end
 end

@@ -8,18 +8,19 @@ module OpenActive
     end
 
     def fetch
-      return Page.new(@uri, RestClient.get( @uri ))
+      return Page.new(@current_uri, RestClient.get( @current_uri ))
     end
 
-    #TODO errors?
-    def harvest
+    def harvest(sleep=0)
       page = nil
+      current_uri = uri
       loop do
         page = fetch
-        yield page
+        yield page if block_given?
         break if page.last_page?
         #set up next page
-        current_uri = page.next_page
+        @current_uri = page.next_page
+        sleep(sleep)
       end
       page
     end
