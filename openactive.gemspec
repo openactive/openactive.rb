@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rest-client"
   spec.add_dependency "json"
-
   #spec.add_dependency "typhoeus"
   spec.add_dependency "uri_template"
 
@@ -34,5 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-expectations"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "webmock"
+
+#  spec.add_development_dependency "vcr"
 
 end
