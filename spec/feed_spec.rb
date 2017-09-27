@@ -56,6 +56,4 @@ describe OpenActive::Feed do
 
   end
 
-  it "should handle relative URLs"
-  it "should check if feed conforms to RPDE spec"
 end

@@ -22,6 +22,10 @@ describe OpenActive::Page do
       expect( page.next_page ).to eql("http://www.example.com/next")
     end
 
+    it "should check if feed conforms to RPDE spec" do
+      expect( page.valid_rpde?).to eql(true)
+    end
+
     it "should identify license" do
       expect( page.license ).to eql("https://creativecommons.org/licenses/by/4.0/")
     end

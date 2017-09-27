@@ -1,5 +1,6 @@
 require "rest-client"
 require "json"
+require "uri"
 
 require "openactive/datasets.rb"
 require "openactive/feed.rb"

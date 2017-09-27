@@ -11,12 +11,11 @@ module OpenActive
     end
 
     def next_page
-      return body["next"]
+      return to_abs(body["next"])
     end
 
     def license
       return body["license"]
-
     end
 
     def items
@@ -49,6 +48,15 @@ module OpenActive
         end
       end
       @body
+    end
+
+    private
+
+    def to_abs(next_page)
+      if !next_page.start_with?("/")
+        return next_page
+      end
+      return (URI.parse(@uri) + next_page).to_s
     end
   end
 end
