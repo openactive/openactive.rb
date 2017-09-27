@@ -18,12 +18,17 @@ module OpenActive
       return body["license"]
 
     end
+
     def items
       return body["items"]
     end
 
+    def valid_rpde?
+      return !license.nil? && !next_page.nil? && !items.nil?
+    end
+
     def declares_oa_context?
-      return nil if items.empty?
+      return nil if !valid_rpde? || items.empty?
       to_check = nil
       items.each do |item|
         if item["data"]
@@ -32,7 +37,7 @@ module OpenActive
         end
       end
       return nil if to_check.nil?
-      return to_check["data"]["@context"].include?(OpenActive::CONTEXT)
+      return to_check["data"]["@context"] && to_check["data"]["@context"].include?(OpenActive::CONTEXT)
     end
 
     def body

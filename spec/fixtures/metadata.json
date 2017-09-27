@@ -1,0 +1,21 @@
+{
+  "dataset-site-url": "http://data.goodgym.org/",
+  "title": "GoodGym Sessions",
+  "description": "Session data from the www.goodgym.org site",
+  "publisher-name": "GoodGym",
+  "publisher-url": "https://www.goodgym.org",
+  "keyword-1": "#UseYourRun",
+  "keyword-2": "Running",
+  "data-url": "https://www.goodgym.org/getHappenings",
+  "created": "2016-07-11",
+  "documentation-url": "https://github.com/goodgym-oa/opendata",
+  "rpde-version": "0.2.3",
+  "license-name": "Creative Commons Attribution Licence (CC-BY v4.0)",
+  "license-url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution-text": "GoodGym",
+  "attribution-url": "http://data.goodgym.org/",
+  "mailchimp": "require([\"mojo/signup-forms/Loader\"], function(L) { L.start({\"baseUrl\":\"mc.us13.list-manage.com\",\"uuid\":\"7143de572aae09a68ce9de9d0\",\"lid\":\"21b60b05c7\"}) })",
+  "copyright-notice": "",
+  "odi-certificate-number": "",
+  "publish": true
+}
