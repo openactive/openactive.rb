@@ -13,6 +13,7 @@ module OpenActive
           resp = RestClient.get("https://raw.githubusercontent.com/#{fork['full_name']}/master/metadata.json")
           metadata = JSON.parse(resp.body)
           datasets << {
+              id: fork['name'],
               title: metadata["title"],
               data_url: metadata["data-url"]
           } if metadata["publish"] && metadata["publish"] == true

@@ -10,7 +10,7 @@ describe OpenActive::Datasets do
 
   it "should extract name and url" do
     datasets = OpenActive::Datasets.list
-    expect( datasets.first ).to eql({title: "GoodGym Sessions", data_url: "https://www.goodgym.org/getHappenings"})
+    expect( datasets.first ).to eql({ id: "goodgym-oa.github.io", title: "GoodGym Sessions", data_url: "https://www.goodgym.org/getHappenings"})
   end
 
   it "should extract all published datasets" do
