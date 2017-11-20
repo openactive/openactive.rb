@@ -63,5 +63,26 @@
   "mailchimp": "require([\"mojo/signup-forms/Loader\"], function(L) { L.start({\"baseUrl\":\"mc.us9.list-manage.com\",\"uuid\":\"6fd331ba918da2ca4a9244ca7\",\"lid\":\"934c5b3ea3\"}) })",
   "copyright-notice": "",
   "odi-certificate-number": ""
+ },
+ {
+  "dataset-site-url": "http://data.fusion-lifestyle.com/",
+  "title": "Fusion Lifestyle Sessions",
+  "description": "Session data from the www.fusion-lifestyle.com site",
+  "publisher-name": "Fusion Lifestyle",
+  "publisher-url": "http://www.fusion-lifestyle.com/",
+  "keyword-1": "Leisure",
+  "keyword-2": "Pool",
+  "data-url": "https://fusion-lifestyle-openactive.azurewebsites.net/api/sessions",
+  "created": "2017-02-28",
+  "documentation-url": "https://github.com/fusion-lifestyle/opendata",
+  "rpde-version": "0.2.3",
+  "license-name": "Creative Commons Attribution Licence (CC-BY v4.0)",
+  "license-url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution-text": "Fusion Lifestyle",
+  "attribution-url": "http://data.fusion-lifestyle.com",
+  "mailchimp": "require([\"mojo/signup-forms/Loader\"], function(L) { L.start({\"baseUrl\":\"mc.us15.list-manage.com\",\"uuid\":\"ae2620c8f0c5efc8c20d3aea7\",\"lid\":\"a42bbdedba\"}) })",
+  "copyright-notice": "",
+  "odi-certificate-number": "",
+  "publish": false
  }
 ]
