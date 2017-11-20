@@ -6,14 +6,13 @@ module OpenActive
     def self.list
       resp = RestClient.get( DIRECTORY )
       results = JSON.parse(resp.body)
-      datasets = []
+      datasets = {}
       results.each do |result|
         begin
           next unless result["publish"] && result["publish"] == true
-          result.merge!({
-            "id" => result["documentation-url"].gsub("https://github.com/", "")
+          datasets.merge!({
+            result["documentation-url"].gsub("https://github.com/", "") => result
           })
-          datasets << result
         rescue => e
           #ignore errors
         end

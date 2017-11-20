@@ -8,9 +8,8 @@ describe OpenActive::Datasets do
 
   it "should extract name and url" do
     datasets = OpenActive::Datasets.list
-    expect( datasets.first ).to eql({
+    expect( datasets["activenewham/opendata"] ).to eql({
 
-      "id" => "activenewham/opendata",
       "dataset-site-url" => "http://data.activenewham.org.uk/",
       "title" => "activeNewham Sessions",
       "description" => "Session data from the activenewham.org.uk site",
@@ -33,7 +32,7 @@ describe OpenActive::Datasets do
       "example-url" => [
        "https://imin-ltd.github.io/gladstone-adapter-documentation/example.json"
       ]
-      
+
     })
   end
 
