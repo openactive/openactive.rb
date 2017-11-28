@@ -6,6 +6,8 @@ describe OpenActive::Datasets do
     WebMock.stub_request(:get, "https://www.openactive.io/datasets/directory.json").to_return(body: load_fixture("directory.json"))
     WebMock.stub_request(:get, "https://activenewham-openactive.herokuapp.com/").to_return(status: 200, body: load_fixture("single-item.json"))
     WebMock.stub_request(:get, "https://makesweat.com/service/openactive.php").to_return(status: 200, body: load_fixture("single-item.json"))
+    WebMock.stub_request(:get, "https://api.github.com/repos/activenewham/opendata/issues").to_return(status: 200, body: "[{}]", headers: {})
+    WebMock.stub_request(:get, "https://api.github.com/repos/makesweat/opendata/issues").to_return(status: 200, body: "[{}]", headers: {})
   end
 
   it "should extract name and url" do
@@ -28,6 +30,7 @@ describe OpenActive::Datasets do
       "attribution-url" => "http://data.activenewham.org.uk/",
       "mailchimp" => "require([\"mojo/signup-forms/Loader\"], function(L) { L.start({\"baseUrl\":\"mc.us15.list-manage.com\",\"uuid\":\"139e08e5077eeef9048052685\",\"lid\":\"5eb5e5184a\"}) })",
       "copyright-notice" => "",
+      "github-issues" => 1,
       "odi-certificate-number" => "",
       "publish" => true,
       "uses-opportunity-model" => true,

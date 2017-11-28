@@ -11,17 +11,23 @@ module OpenActive
         begin
           next unless result["publish"] && result["publish"] == true
 
+          dataset_key = result["documentation-url"].gsub("https://github.com/", "")
+          dataset_key.chomp!("/")
+
           feed = OpenActive::Feed.new(result["data-url"])
           page = feed.fetch
-
           result.merge!({
             "uses-opportunity-model" => page.declares_oa_context?,
             "uses-paging-spec" => page.valid_rpde?
           })
 
-          datasets.merge!({
-            result["documentation-url"].gsub("https://github.com/", "") => result
+          git_resp = RestClient.get('https://api.github.com/repos/'+ dataset_key +'/issues')
+          issues = JSON.parse(git_resp.body)
+          result.merge!({
+            "github-issues" => issues.size
           })
+
+          datasets.merge!({ dataset_key => result })
         rescue => e
           #ignore errors
         end
