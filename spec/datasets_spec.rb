@@ -10,7 +10,7 @@ describe OpenActive::Datasets do
     WebMock.stub_request(:get, "https://api.github.com/repos/makesweat/opendata/issues").to_return(status: 200, body: "[{}]", headers: {})
   end
 
-  it "should extract name and url" do
+  it "should extract dataset meta from directory json" do
     datasets = OpenActive::Datasets.list
     expect( datasets["activenewham/opendata"] ).to eql({
       "dataset-site-url" => "http://data.activenewham.org.uk/",
@@ -39,6 +39,32 @@ describe OpenActive::Datasets do
        "https://imin-ltd.github.io/gladstone-adapter-documentation/example.json"
       ]
     })
+  end
+
+  it "should extract dataset meta even if it couldn't page the data" do
+    WebMock.stub_request(:get, "https://activenewham-openactive.herokuapp.com/").to_return(status: 500)
+    datasets = OpenActive::Datasets.list
+    expect( datasets["activenewham/opendata"] ).to include(
+      "dataset-site-url", "title", "description", "publisher-name", "publisher-url", 
+      "keyword-1", "keyword-2", "data-url", "created", "documentation-url", 
+      "rpde-version", "license-name", "license-url", "attribution-text", 
+      "attribution-url", "mailchimp", "github-issues", "example-url"
+    )
+    expect( datasets["activenewham/opendata"] ).not_to include("uses-opportunity-model", "uses-paging-spec")
+  end
+
+  it "should extract dataset meta even if it couldn't reach github api" do
+    WebMock.stub_request(:get, "https://api.github.com/repos/activenewham/opendata/issues").to_return(status: 500)
+    datasets = OpenActive::Datasets.list
+    
+    expect( datasets["activenewham/opendata"] ).to include(
+      "dataset-site-url", "title", "description", "publisher-name", "publisher-url", 
+      "keyword-1", "keyword-2", "data-url", "created", "documentation-url", 
+      "rpde-version", "license-name", "license-url", "attribution-text", 
+      "attribution-url", "mailchimp", "uses-opportunity-model", "uses-paging-spec", 
+      "example-url")
+
+    expect( datasets["activenewham/opendata"] ).not_to include("github-issues")
   end
 
   it "should extract all published datasets" do
