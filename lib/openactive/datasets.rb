@@ -18,7 +18,7 @@ module OpenActive
             feed = OpenActive::Feed.new(result["data-url"])
             page = feed.fetch
             result.merge!({
-              "uses-opportunity-model" => page.declares_oa_context?,
+              "uses-opportunity-model" => page.declares_oa_context?.eql?(true),
               "uses-paging-spec" => page.valid_rpde?
             })
           rescue
