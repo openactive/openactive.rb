@@ -4,12 +4,13 @@ describe OpenActive::Datasets do
 
   before(:each) do
     WebMock.stub_request(:get, "https://www.openactive.io/datasets/directory.json").to_return(body: load_fixture("directory.json"))
+    WebMock.stub_request(:get, "https://activenewham-openactive.herokuapp.com/").to_return(status: 200, body: load_fixture("single-item.json"))
+    WebMock.stub_request(:get, "https://makesweat.com/service/openactive.php").to_return(status: 200, body: load_fixture("single-item.json"))
   end
 
   it "should extract name and url" do
     datasets = OpenActive::Datasets.list
     expect( datasets["activenewham/opendata"] ).to eql({
-
       "dataset-site-url" => "http://data.activenewham.org.uk/",
       "title" => "activeNewham Sessions",
       "description" => "Session data from the activenewham.org.uk site",
@@ -29,10 +30,11 @@ describe OpenActive::Datasets do
       "copyright-notice" => "",
       "odi-certificate-number" => "",
       "publish" => true,
+      "uses-opportunity-model" => true,
+      "uses-paging-spec" => true,
       "example-url" => [
        "https://imin-ltd.github.io/gladstone-adapter-documentation/example.json"
       ]
-
     })
   end
 

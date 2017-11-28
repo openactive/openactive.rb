@@ -10,6 +10,15 @@ module OpenActive
       results.each do |result|
         begin
           next unless result["publish"] && result["publish"] == true
+
+          feed = OpenActive::Feed.new(result["data-url"])
+          page = feed.fetch
+
+          result.merge!({
+            "uses-opportunity-model" => page.declares_oa_context?,
+            "uses-paging-spec" => page.valid_rpde?
+          })
+
           datasets.merge!({
             result["documentation-url"].gsub("https://github.com/", "") => result
           })
