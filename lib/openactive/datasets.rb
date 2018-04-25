@@ -3,6 +3,7 @@ module OpenActive
 
     DIRECTORY="https://www.openactive.io/datasets/directory.json"
 
+    #Returns a hash of datasets keyed on a unique id.
     def self.list
       resp = RestClient.get( DIRECTORY )
       results = JSON.parse(resp.body)
