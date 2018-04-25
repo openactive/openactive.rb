@@ -35,5 +35,13 @@ $ gem install openactive
 
 ## Usage Examples
 
-### Listing Datasets
+The code includes a couple of example scripts in the `bin` directory that illustrate usage of the library to fetch 
+metadata and page through feeds.
+
+See:
+
+* bin/oa_list.rb -- list all published datasets
+* bin/oa_status.rb -- create a CSV file summarising current status of published datasets
+* bin/oa_sample.rb -- dump a random "modified" entry from a feed
+* bin/oa_harvest.rb -- harvest all data from a feed, storing results in a directory
 
