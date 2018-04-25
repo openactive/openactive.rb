@@ -2,7 +2,7 @@
 
 # OpenActive Client Library for Ruby
 
-A very basic Ruby client library for working with data published as part of the [OpenActive](https://openactive.io) project.
+A basic Ruby client library for working with data published as part of the [OpenActive](https://openactive.io) project.
 
 Specifically the code provides support for:
 
@@ -30,7 +30,7 @@ $ bundle
 Or install it yourself as:
 
 ```
-$ gem install csvlint
+$ gem install openactive
 ```
 
 ## Usage Examples
