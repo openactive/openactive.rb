@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+#
+# Example command-line application
+#
+# Walks through an entire RPDE feed, dumping each page of results
+# to a specified directory
+#
+# ruby bin/oa_harvest.rb feed-url path-to-directory
+#
 $:.unshift File.join( File.dirname(__FILE__), "..", "lib")
 
 require 'openactive'

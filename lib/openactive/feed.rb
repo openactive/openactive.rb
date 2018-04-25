@@ -8,7 +8,7 @@ module OpenActive
     end
 
     def fetch
-      return Page.new(@current_uri, RestClient.get( @current_uri ))
+      return Page.new(@current_uri, RestClient::Request.execute( url: @current_uri, method: :get, verify_ssl: false ))
     end
 
     def harvest(sleep=0)
