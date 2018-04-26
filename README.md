@@ -45,6 +45,8 @@ See:
 * `bin/oa_sample.rb` -- dump a random "modified" entry from a feed
 * `bin/oa_harvest.rb` -- harvest all data from a feed, storing results in a directory
 
+For a slightly longer example, take a look at this tutorial on [Indexing Opportunity Data Using Elastic Search](https://github.com/openactive/openactive-es-example)
+
 ## Handling of items in a feed
 
 The library doesn't currently provide support for manipulating individual items in an [RPDE](https://www.openactive.io/realtime-paged-data-exchange/) feed. It just returns the individual items as Ruby hashes that can then be manipulated by the calling code.
