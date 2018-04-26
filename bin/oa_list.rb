@@ -9,6 +9,6 @@ require 'csv'
 
 CSV.open("datasets.csv", "w") do |csv|
   OpenActive::Datasets.list.each do |id, site|
-	  puts site["dataset-site-url"
+	  puts site["dataset-site-url"]
   end
 end
