@@ -16,7 +16,7 @@
         },
         "name": "Bodyattack® Fri 7am",
         "@context": [
-          "https://www.openactive.io/ns/oa.jsonld",
+          "https://openactive.io/",
           "https://www.openactive.io/ns-beta/oa.jsonld"
         ],
         "type": "Event",

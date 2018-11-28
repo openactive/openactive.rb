@@ -7,5 +7,5 @@ require "openactive/feed.rb"
 require "openactive/page.rb"
 
 module OpenActive
-  CONTEXT = "https://www.openactive.io/ns/oa.jsonld"
+  CONTEXT = "https://openactive.io/"
 end
