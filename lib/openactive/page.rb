@@ -36,7 +36,9 @@ module OpenActive
         end
       end
       return nil if to_check.nil?
-      return to_check["data"]["@context"] && to_check["data"]["@context"].include?(OpenActive::CONTEXT)
+      return to_check["data"]["@context"] &&
+          (to_check["data"]["@context"].include?(OpenActive::CONTEXT) || to_check["data"]["@context"].include?(OpenActive::ORIGINAL_CONTEXT))
+
     end
 
     def body

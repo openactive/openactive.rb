@@ -8,4 +8,5 @@ require "openactive/page.rb"
 
 module OpenActive
   CONTEXT = "https://openactive.io/"
+  ORIGINAL_CONTEXT = "https://www.openactive.io/ns/oa.jsonld"
 end
